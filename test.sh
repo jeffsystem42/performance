@@ -8,3 +8,4 @@ sed -i '/HEAP/s/1g/2g/g' /home/perf/apache-jmeter-5.1.1/bin/jmeter
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
 #wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/vote1.jmx > vote1.jmx
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/adresses.txt > /home/perf/adresses.txt
