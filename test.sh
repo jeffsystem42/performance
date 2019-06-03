@@ -22,5 +22,4 @@ wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/t
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/taille-3.jpg > /home/perf/apache-jmeter-5.1.1/bin/taille-3.jpg
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/taille-4.jpg > /home/perf/apache-jmeter-5.1.1/bin/taille-4.jpg
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/taille-5.jpg > /home/perf/apache-jmeter-5.1.1/bin/taille-5.jpg
-wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/bruitV2.0.jmx > /home/perf/apache-jmeter-5.1.1/bin/bruitV2.0.jmx
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/users.dat > /home/perf/apache-jmeter-5.1.1/bin/users.dat
