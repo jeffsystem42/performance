@@ -6,6 +6,8 @@ rm -rf apache-jmeter-5.1.1.zip
 sed -i '/yyyy/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/ignore_failed_embedded_resources/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/ignore_failed_embedded_resources/s/false/true/' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
+sed -i '/httpclient.socket.http/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
+sed -i '/httpclient.socket.http/s/0/1536000/' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 #sed -i '/HEAP/s/1g/2g/g' /home/perf/apache-jmeter-5.1.1/bin/jmeter
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
