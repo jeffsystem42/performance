@@ -9,6 +9,8 @@ sed -i '/ignore_failed_embedded_resources/s/false/true/' /home/perf/apache-jmete
 sed -i '/httpclient.socket.http/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/httpclient.socket.http/s/0/128000/' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/hc.parameters.file/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
+sed -i '/http.connection.stalecheck/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/hc.parameters
+sed -i '/http.connection.stalecheck/s/false/true/g' /home/perf/apache-jmeter-5.1.1/bin/hc.parameters
 sed -i '/HEAP/s/1g/5g/g' /home/perf/apache-jmeter-5.1.1/bin/jmeter
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
