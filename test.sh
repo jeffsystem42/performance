@@ -7,7 +7,7 @@ sed -i '/yyyy/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/ignore_failed_embedded_resources/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/ignore_failed_embedded_resources/s/false/true/' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/httpclient.socket.http/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
-sed -i '/httpclient.socket.http/s/0/128000/' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
+#sed -i '/httpclient.socket.http/s/0/128000/' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 #sed -i '/httpclient.socket.http/s/128000/1024000/' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/hc.parameters.file/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/http.connection.stalecheck/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/hc.parameters
