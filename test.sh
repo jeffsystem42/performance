@@ -17,6 +17,8 @@ sed -i '/httpclient4.retrycount/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmet
 sed -i '/httpclient4.retrycount/s/0/1/g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/httpclient4.request_sent_retry_enabled/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 sed -i '/httpclient4.request_sent_retry_enabled/s/false/true/g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
+sed -i '/httpclient4.idletimeout/s/^#//g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
+sed -i '/httpclient4.idletimeout/s/0/60000/g' /home/perf/apache-jmeter-5.1.1/bin/jmeter.properties
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/adresses.txt > /home/perf/adresses.txt
