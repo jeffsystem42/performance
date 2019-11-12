@@ -1,4 +1,4 @@
-wget http://apache.crihan.fr/dist//jmeter/binaries/apache-jmeter-5.1.1.zip
+wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.1.1.zip
 mv apache-jmeter* /home/perf
 cd /home/perf
 unzip apache-jmeter-5.1.1.zip
