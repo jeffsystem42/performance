@@ -1,0 +1,159 @@
+ package com.hraccess.portal.login;
+
+import com.hraccess.openhr.security.UserDescription;
+import com.hraccess.portal.PORTLLogger;
+import com.hraccess.portal.accessibility.AccessibilityMode;
+import com.hraccess.webapp.util.Encoder;
+import com.hraccess.wutil.WLocalizedResources;
+import org.apache.commons.configuration.Configuration;
+import org.apache.commons.lang.StringUtils;
+
+public class DefaultLoginRequestBuilder implements LoginRequestBuilder {
+   public static final String PROPERTY_UPPERCASE = "uppercase";
+   public static final String ALLOW_LOGIN_MODULE_HINT = "allow_loginModuleHint";
+   public static final String PROPERTY_ALLOW_SAME_PASSWORD = "allow_same_password";
+   private static final String PASSWORDS_NOT_MATCHING_ID = "ID126";
+   private static final String PASSWORDS_NOT_MATCHING_DEFAULT = "the new password confirmation doesn't match";
+   private static final String LOGIN_MODULE_HINT_NOT_ALLOWED_ID = "ID136";
+   private static final String LOGIN_MODULE_HINT_NOT_ALLOWED_DEFAULT = "Parameter $1 is not allowed";
+   private static final String SAME_PASSWORDS_AS_CURRENT_ID = "ID172";
+   private static final String SAME_PASSWORDS_AS_CURRENT_DEFAULT = "The New Password cannot be the same as the Current Password";
+   private boolean uppercase = true;
+   private boolean allowLoginModuleHint = true;
+   private boolean allowSamePassword = true;
+
+   public void init(Configuration configuration) {
+      this.uppercase = configuration.getBoolean("uppercase", true);
+      this.allowLoginModuleHint = configuration.getBoolean("allow_loginModuleHint", true);
+      this.allowSamePassword = configuration.getBoolean("allow_same_password", true);
+   }
+
+   public LoginRequest createLoginRequest(HRPortalRequest request) throws LoginRequestBuilderException {
+      WLocalizedResources localizedResources = WLocalizedResources.getLocalizedResources("hra-space-str", request.getLanguage());
+      String loginId = request.getParameterValue("loginid");
+      if (StringUtils.isBlank(loginId)) {
+         loginId = request.getParameterValue("username");
+      }
+
+      String encodedUserDescription = request.getParameterValue("userdescription");
+      if (!StringUtils.isNotBlank(loginId) && !StringUtils.isNotBlank(encodedUserDescription)) {
+         return null;
+      } else {
+         LoginRequest loginRequest = null;
+         String sErrorMessageId = null;
+         String sErrorMessageDefault = null;
+         String password;
+         String loginModuleHint;
+         if (StringUtils.isNotBlank(loginId)) {
+            if (this.uppercase) {
+               loginId = loginId.toUpperCase();
+            }
+
+            password = request.getParameterValue("password");
+            if (StringUtils.isBlank(password)) {
+               password = request.getParameterValue("userpassword");
+            }
+
+            if (password != null && this.uppercase) {
+               password = password.toUpperCase();
+            }
+
+            loginModuleHint = request.getParameterValue("loginModuleHint");
+            if (StringUtils.isBlank(loginModuleHint)) {
+               loginModuleHint = null;
+            }
+
+            if (!this.allowLoginModuleHint && StringUtils.isNotBlank(loginModuleHint)) {
+               PORTLLogger.main.debug("loginModuleHint <" + loginModuleHint + "> found but not allowed");
+               throw new LoginRequestBuilderException(localizedResources.getString("ID136", "Parameter $1 is not allowed", new String[]{"loginModuleHint"}));
+            }
+
+            String language = request.getParameterValue("language");
+            AccessibilityMode accessibilityMode = AccessibilityMode.getFromValue(request.getParameterValue("accessibility"));
+            PORTLLogger.main.debug("Found loginid in HTTP request : " + loginId);
+            PORTLLogger.main.debug("language : " + language);
+            PORTLLogger.main.debug("loginModuleHint : " + loginModuleHint);
+            if (accessibilityMode != null) {
+               PORTLLogger.main.debug("accessibilityMode : " + accessibilityMode.getLabel());
+            }
+
+            String newPassword1 = request.getParameterValue("newpassword1");
+            String newPassword2 = request.getParameterValue("newpassword2");
+            UserDescription userDesc;
+            if (!StringUtils.isNotBlank(newPassword1) && !StringUtils.isNotBlank(newPassword2)) {
+               userDesc = new UserDescription(loginId, password);
+               if (StringUtils.isNotBlank(language)) {
+                  userDesc.setLanguage(language.charAt(0));
+               }
+
+               loginRequest = new LoginRequest(userDesc, accessibilityMode, loginModuleHint);
+            } else {
+               if (this.uppercase) {
+                  newPassword1 = StringUtils.upperCase(newPassword1);
+                  newPassword2 = StringUtils.upperCase(newPassword2);
+               }
+
+               PORTLLogger.main.debug("New password request");
+               if (StringUtils.equals(newPassword1, newPassword2)) {
+                  if (StringUtils.equals(password, newPassword1) && !this.allowSamePassword) {
+                     loginRequest = null;
+                     sErrorMessageId = "ID172";
+                     sErrorMessageDefault = "The New Password cannot be the same as the Current Password";
+                  } else {
+                     userDesc = new UserDescription(loginId, password, newPassword1);
+                     if (StringUtils.isNotBlank(language)) {
+                        userDesc.setLanguage(language.charAt(0));
+                     }
+
+                     loginRequest = new LoginRequest(userDesc, accessibilityMode, loginModuleHint);
+                  }
+               } else {
+                  loginRequest = null;
+                  sErrorMessageId = "ID126";
+                  sErrorMessageDefault = "the new password confirmation doesn't match";
+               }
+            }
+         } else if (StringUtils.isNotBlank(encodedUserDescription)) {
+            PORTLLogger.main.debug("Found userdescription in HTTP request : " + encodedUserDescription);
+            UserDescription userDescription = null;
+
+            try {
+               userDescription = (UserDescription)Encoder.decode(encodedUserDescription);
+            } catch (Exception var15) {
+               sErrorMessageDefault = "Unable to decode userDescription";
+            }
+
+            if (userDescription != null) {
+               loginModuleHint = request.getParameterValue("loginModuleHint");
+               if (StringUtils.isBlank(loginModuleHint)) {
+                  loginModuleHint = null;
+               }
+
+               if (!this.allowLoginModuleHint && StringUtils.isNotBlank(loginModuleHint)) {
+                  PORTLLogger.main.debug("loginModuleHint <" + loginModuleHint + "> found but not allowed");
+                  throw new LoginRequestBuilderException(localizedResources.getString("ID136", "Parameter $1 is not allowed", new String[]{"loginModuleHint"}));
+               }
+
+               AccessibilityMode accessibilityMode = AccessibilityMode.getFromValue(request.getParameterValue("accessibility"));
+               PORTLLogger.main.debug("UserDescription : " + userDescription);
+               PORTLLogger.main.debug("loginModuleHint : " + loginModuleHint);
+               PORTLLogger.main.debug("accessibilityMode : " + accessibilityMode.getLabel());
+               loginRequest = new LoginRequest(userDescription, accessibilityMode, loginModuleHint);
+            } else {
+               loginRequest = null;
+            }
+         }
+
+         if (loginRequest == null) {
+            password = sErrorMessageDefault;
+            if (sErrorMessageId != null) {
+               password = localizedResources.getString(sErrorMessageId, sErrorMessageDefault);
+            }
+
+            throw new LoginRequestBuilderException(password);
+         } else {
+            return loginRequest;
+         }
+      }
+   }
+}
