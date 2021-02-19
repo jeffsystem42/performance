@@ -34,5 +34,6 @@ wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/t
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/taille-5.jpg > /home/perf/apache-jmeter-5.1.1/bin/taille-5.jpg
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/users.dat > /home/perf/apache-jmeter-5.1.1/bin/users.dat
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/fiches.csv > /home/perf/fiches.csv
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/ext.zip > /home/perf/apache-jmeter-5.1.1/lib/ext/ext.zip
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
