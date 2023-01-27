@@ -9,6 +9,7 @@ import java.util.Properties;
 
 // Referenced classes of package tools.utils:
 //            EncodedProperties
+// ajout JFRI
 
 public class Configuration {
 	protected final static String UNIXSEPARATOR = "/";
