@@ -21,7 +21,6 @@ sed -i '/httpclient4.idletimeout/s/^#//g' /home/perf/apache-jmeter-5.6.3/bin/jme
 sed -i '/httpclient4.idletimeout/s/0/60000/g' /home/perf/apache-jmeter-5.6.3/bin/jmeter.properties
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
-cp jmeter-wssecurity-1.9.jar /home/perf/apache-jmeter-5.6.3/lib/ext
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/adresses.txt > /home/perf/adresses.txt
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/taille-1.pdf > /home/perf/apache-jmeter-5.6.3/bin/taille-1.pdf
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/taille-2.pdf > /home/perf/apache-jmeter-5.6.3/bin/taille-2.pdf
@@ -36,5 +35,6 @@ wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/t
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/users.dat > /home/perf/apache-jmeter-5.6.3/bin/users.dat
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/fiches.csv > /home/perf/fiches.csv
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/ext.zip > /home/perf/apache-jmeter-5.6.3/lib/ext/ext.zip
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jmeter-wssecurity-1.9.jar > /home/perf/apache-jmeter-5.6.3/lib/ext
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
