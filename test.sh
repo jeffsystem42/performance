@@ -35,6 +35,6 @@ wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/t
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/users.dat > /home/perf/apache-jmeter-5.6.3/bin/users.dat
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/fiches.csv > /home/perf/fiches.csv
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/ext.zip > /home/perf/apache-jmeter-5.6.3/lib/ext/ext.zip
-wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jmeter-wssecurity-1.9.jar > /home/perf/apache-jmeter-5.6.3/lib/ext
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jmeter-wssecurity-1.9.jar > /home/perf/apache-jmeter-5.6.3/lib/ext/jmeter-wssecurity-1.9.jar
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
