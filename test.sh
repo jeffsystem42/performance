@@ -38,5 +38,8 @@ wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/e
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jmeter-wssecurity-1.9.jar > /home/perf/apache-jmeter-5.6.3/lib/ext/jmeter-wssecurity-1.9.jar
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/wss4j-ws-security-common-3.0.0.jar > /home/perf/apache-jmeter-5.6.3/lib/wss4j-ws-security-common-3.0.0.jar
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/wss4j-ws-security-dom-3.0.0.jar > /home/perf/apache-jmeter-5.6.3/lib/wss4j-ws-security-dom-3.0.0.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/cmdrunner-2.3.jar > /home/perf/apache-jmeter-5.6.3/lib/cmdrunner-2.3.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/json-lib-2.4-jdk15.jar > /home/perf/apache-jmeter-5.6.3/lib/json-lib-2.4-jdk15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/xmlsec-3.0.1.jar > /home/perf/apache-jmeter-5.6.3/lib/xmlsec-3.0.1.jar
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
