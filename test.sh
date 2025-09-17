@@ -41,5 +41,19 @@ wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/w
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/cmdrunner-2.3.jar > /home/perf/apache-jmeter-5.6.3/lib/cmdrunner-2.3.jar
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/json-lib-2.4-jdk15.jar > /home/perf/apache-jmeter-5.6.3/lib/json-lib-2.4-jdk15.jar
 wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/xmlsec-3.0.1.jar > /home/perf/apache-jmeter-5.6.3/lib/xmlsec-3.0.1.jar
+
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/http2-client-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/http2-client-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/http2-common-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/http2-common-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/http2-hpack-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/http2-hpack-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/http2-http-client-transport-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/http2-http-client-transport-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jetty-alpn-client-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/jetty-alpn-client-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jetty-alpn-java-client-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/jetty-alpn-java-client-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jetty-client-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/jetty-client-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jetty-http-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/jetty-http-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jetty-io-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/jetty-io-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jetty-util-11.0.15.jar > /home/perf/apache-jmeter-5.6.3/lib/jetty-util-11.0.15.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jmeter-bzm-commons-0.2.3.jar > /home/perf/apache-jmeter-5.6.3/lib/jmeter-bzm-commons-0.2.3.jar
+wget -q -O - https://raw.githubusercontent.com/jeffsystem42/performance/master/jmeter-bzm-http2-2.0.6.jar > /home/perf/apache-jmeter-5.6.3/lib/ext/jmeter-bzm-http2-2.0.6.jar
+
 chown -R perf:perf /home/perf
 chmod -R 755 /home/perf
